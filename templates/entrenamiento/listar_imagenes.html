@@ -1,0 +1,25 @@
+{%extends "index1.html"%} {% block body %}
+<div style="text-align: center;">
+    <h1 style="color: white;">Listado de Imagenes</h1>
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Imagen</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in imgs%}
+            <tr>
+                <td>{{r.id_imagen}}</td>
+                <td>{{r.nombre}}</td>
+                <td><img src="../../media/{{r.imagen_normalizada}}" alt="Hola" width="200px"></td>
+                <td><a href="{%url 'entrenamiento:elim_img' r.id_imagen%}" class="btn btn-danger">Eliminar</a></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+</div>
+{% endblock body %}

@@ -1,0 +1,49 @@
+ {%extends "index1.html"%} {% block body %}{%if user.is_superuser %} {% if administradores %}
+
+<div style="text-align: center;">
+    <h1 style="color: white;">Listado de Usuarios</h1>
+</div>
+<div>
+    <a href="{%url 'usuarios:nuevo'%}" class="btn btn-success">Nuevo Usuario</a>
+</div>
+<div style="text-align: center;">
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Correo Electronico</th>
+                <th>Puesto</th>
+                <th>Opciones </th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for administrador in administradores%}
+            <tr>
+                <td>{{administrador.id}}</td>
+                <td>{{administrador.first_name}}</td>
+                <td>{{administrador.last_name}}</td>
+                <td>{{administrador.username}}</td>
+                {%if administrador.is_superuser%}
+                <td>Administrador</td>
+                {%else%}
+                <td>Técnico</td>
+                {%endif%}
+                <td>
+                    <a href="{%url 'usuarios:editar' administrador.id%}" class="btn btn-primary">Editar</a>
+                    <a href="{%url 'usuarios:eliminar' administrador.id%}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    {% else %}
+    <h1>No existen Administradores registrados</h1>
+    {% endif %} {%else%}
+    <div style="text-align: center;">
+        Bienvenido
+    </div>
+    {% endif %}
+</div>
+{% endblock body %}

@@ -1,0 +1,37 @@
+{%extends "index.html"%}{%block title%} login{%endblock title%} {% block body %}
+<br><br><br><br>
+<div class="form-group row justify-content-center">
+    <div class='col-4'>
+
+    </div>
+    <div class='col-4'>
+        <div>
+            <h2 style='text-align:center'>Inicio de Sesión</h2>
+        </div>
+        <form method="POST">
+            {% csrf_token %} {%if form.errors %}
+            <script>
+                alert('Usuario o Contraseña Incorrectos')
+            </script>
+            {%endif%}
+            <label for="id_username">
+            <h4>
+                Correo Electrónico
+            </h4>
+        </label>{{form.username}}
+            <label for="id_password">
+            <h4>
+                Contraseña
+            </h4>
+        </label>{{form.password}}
+            <br><br>
+            <a href="{%url 'reset_password'%}" class="btn btn-secondary">Reestablecer contraseña</a>
+            <button type="submit" class="btn btn-success">Ingresar</button>
+        </form>
+    </div>
+    <div class='col-4'>
+
+    </div>
+</div>
+
+{% endblock body %}

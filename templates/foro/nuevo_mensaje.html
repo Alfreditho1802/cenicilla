@@ -1,0 +1,104 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajería</title>
+    <link rel="stylesheet" href="{%static 'css/bootstrap.css'%}">
+    <link rel="shortcut icon" href="#" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <META HTTP-EQUIV="REFRESH" CONTENT="10;URL={%url 'foro:nuevo_mensaje' foro%}">
+</head>
+
+<body style="background-color: rgb(131, 114, 223)">
+    <div id="contenido" class="form-group row justify-content-center">
+        {%if user.is_superuser %}
+        <div class="col-8">
+            <table class="table table-bordered table-dark col-6">
+                <thead>
+                    <tr>
+                        <th><a href="{%url 'usuarios:menu'%}" class="btn btn-success">Menu_Principal</a></th>
+                        <th><a href="{%url 'usuarios:mostrar'%}" class="btn btn-success">Usuarios</a></th>
+                        <th><a href="{%url 'entrenamiento:menu'%}" class="btn btn-success">Entrenamiento</a></th>
+                        <th><a href="{%url 'foro:mostrar_foro'%}" class="btn btn-success">Foros</a></th>
+                        <th><a href="{%url 'archivos:mostrar'%}" class="btn btn-success">Archivos_Compartidos</a></th>
+                        <th><a href="{%url 'logout'%}" class="btn btn-success">Salir</a></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div style="text-align: right;" class="col-4">
+            <img src="../../media/logo.jpg" alt="hola" width="100px">
+        </div>
+        {%else%}
+        <div class="col-8">
+            <table class="table table-bordered table-dark col-6">
+                <thead>
+                    <tr>
+                        <th><a href="{%url 'usuarios:menu'%}" class="btn btn-success">Menu_Principal</a></th>
+                        <th><a href="{%url 'entrenamiento:menu'%}" class="btn btn-success">Analisis</a></th>
+                        <th><a href="{%url 'foro:mostrar_foro'%}" class="btn btn-success">Foros</a></th>
+                        <th><a href="{%url 'archivos:mostrar'%}" class="btn btn-success">Archivos_Compartidos</a></th>
+                        <th><a href="{%url 'logout'%}" class="btn btn-success">Salir</a></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div style="text-align: right;" class="col-4">
+            <img src="../../media/logo.jpg" alt="hola" width="100px">
+        </div>
+        {%endif%}
+    </div>
+    <div class="form-group row justify-content-center">
+        <div class="col-3">
+
+        </div>
+        <div class="col-6">
+            <h1 style="text-align: center;">Mensajería</h1>
+            <table class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Mensajes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for u,m in usuario%}
+                    <tr>
+                        <td>{{u.first_name}}</td>
+                        <td>{{m.mensaje}}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-3">
+
+        </div>
+    </div>
+    <div class="form-group row justify-content-center">
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %} {{form.mensaje}}
+                <br>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+        <div class="col-4">
+
+        </div>
+    </div>
+
+
+
+
+
+    <script src="{%static 'js/bootstrap.min.js'%}"></script>
+</body>
+
+</html>

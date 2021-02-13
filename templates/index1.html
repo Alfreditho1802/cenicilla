@@ -1,0 +1,36 @@
+{%extends "index.html"%} {%block title%}{%if user.is_superuser %} Usuario Administrador {%else%} Usuario Técnico {%endif%}{%endblock title%} {%block head %}{%endblock%}{% block contenido %} {%if user.is_superuser %}
+<div class="col-8">
+    <table class="table table-bordered table-dark col-6">
+        <thead>
+            <tr>
+                <th><a href="{%url 'usuarios:menu'%}" class="btn btn-success">Menu_Principal</a></th>
+                <th><a href="{%url 'usuarios:mostrar'%}" class="btn btn-success">Usuarios</a></th>
+                <th><a href="{%url 'entrenamiento:menu'%}" class="btn btn-success">Entrenamiento</a></th>
+                <th><a href="{%url 'foro:mostrar_foro'%}" class="btn btn-success">Foros</a></th>
+                <th><a href="{%url 'archivos:mostrar'%}" class="btn btn-success">Archivos_Compartidos</a></th>
+                <th><a href="{%url 'logout'%}" class="btn btn-success">Salir</a></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<div style="text-align: right;" class="col-4">
+    <img src="../../media/logo.jpg" alt="hola" width="100px">
+</div>
+{%else%}
+<div class="col-8">
+    <table class="table table-bordered table-dark col-6">
+        <thead>
+            <tr>
+                <th><a href="{%url 'usuarios:menu'%}" class="btn btn-success">Menu_Principal</a></th>
+                <th><a href="{%url 'analisis:mostrar'%}" class="btn btn-success">Analisis</a></th>
+                <th><a href="{%url 'foro:mostrar_foro'%}" class="btn btn-success">Foros</a></th>
+                <th><a href="{%url 'archivos:mostrar'%}" class="btn btn-success">Archivos_Compartidos</a></th>
+                <th><a href="{%url 'logout'%}" class="btn btn-success">Salir</a></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<div style="text-align: right;" class="col-4">
+    <img src="../../media/logo.jpg" alt="hola" width="100px">
+</div>
+{%endif%} {% endblock %} {%block body%} {%endblock body%}

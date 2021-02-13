@@ -1,0 +1,25 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}{%endblock title%}</title>
+    <link rel="stylesheet" href="{%static 'css/bootstrap.css'%}">
+    <link rel="shortcut icon" href="#" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo="> {%block head %}{%endblock%}
+</head>
+
+<body style="background-color: rgb(131, 114, 223)">
+    <div id="contenido" class="form-group row justify-content-center">
+        {% block contenido %}{% endblock %}
+    </div>
+    {% block body %}{%endblock body%}
+
+
+
+    <script src="{%static 'js/bootstrap.min.js'%}"></script>
+</body>
+
+</html>

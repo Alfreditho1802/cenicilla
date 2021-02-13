@@ -1,0 +1,7 @@
+{%extends "index1.html"%}{%block body%}
+<form method="post">
+    {% csrf_token %}
+    <p><strong>¿Desea eliminar el registro: {{object}}?</strong></p>
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+</form>
+{%endblock body%}

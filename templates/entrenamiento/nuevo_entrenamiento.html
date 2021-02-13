@@ -1,0 +1,56 @@
+{%extends "index1.html"%} {%block body %}
+
+<h3 style="text-align:center">Nuevo entrenamiento</h3>
+{%if error or num%}
+    <div class="alert alert-danger" role="alert">
+        {{error}}
+        {%if num%}
+        <ul class="errorlist">
+            <li>Canales</li>
+            <ul class="errorlist">
+                <li>Seleccione canales diferentes</li>
+            </ul>
+        </ul>
+        {%endif%}
+    </div>
+{%endif%}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row border border-dark rounded table-dark">
+      <div class="col">
+          <label for="id_nombre">Nombre del entrenamiento</label>
+          {{form.nombre}}
+          <label for="id_descripcion">Descripcion del entrenamiento</label>
+          {{form.descripcion}}
+          <Label for="id_Data">Seleccione la base de datos</Label>
+          {{form.datos}}
+          <br>
+      </div>
+      <div class="col">
+          <label for="id_umbral_minimo">Umbral Minimo</label>
+          {{form.umbral_minimo}}
+          <label for="id_umbral_par_medias">Umbral de medias</label>
+          {{form.umbral_par_media}}
+          <label for="id_umbral_fusion">Umbral de fusión de neuronas</label>
+          {{form.umbral_fusion}}
+          <label for="id_umbral_minimo">Umbral de poda de neuronas</label>
+          {{form.umbral_poda}}
+          <label for="id_umbral_minimo">Cantidad maxima de neuronas a generar</label>
+          {{form.umbral_neuronas}}
+          <br>
+          <br>
+          <button type="submit" class="btn btn-primary btn-lg btn-block">registrar</button><br>
+      </div>
+      <div class="col">
+        <label for="id_canal1">Ingrese valor del canal 1</label>
+        {{form.canal1}}
+        <label for="id_canal2">Ingrese valor del canal 2</label>
+        {{form.canal2}}
+        <label for="id_canal3">Ingrese valor del canal 3</label>
+        {{form.canal3}}
+        <label for="id_canal4">Ingrese valor del canal 4</label>
+        {{form.canal4}}
+      </div>
+    </div>
+  </form>
+{% endblock body %}

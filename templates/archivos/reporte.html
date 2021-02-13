@@ -1,0 +1,93 @@
+{%extends "index1.html"%} {%load static%} {%block head%}
+<script src="{% static 'lib/highcharts-8.1.2/highcharts.js'%}"></script>
+<script src="{% static 'lib/highcharts-8.1.2/modules/exporting.js'%}"></script>
+<script src="{% static 'lib/highcharts-8.1.2/modules/export-data.js'%}"></script>
+<script src="{% static 'lib/highcharts-8.1.2/modules/accessibility.js'%}"></script>
+{%endblock%} {%block body%}
+<div class="form-group row justify-content-center">
+    <div class="col-2">
+    </div>
+    <div class="col-8">
+        <div id="container"></div>
+
+    </div>
+    <div class="col-2">
+    </div>
+    <script>
+        /*
+                dos maneras de castear datos llegando de un archivo python
+                */
+        var x = JSON.parse('{{reporte}}')
+        var hola = "{{reporte}}";
+        data = hola.replace(/[.()'  [\]\\]/g, '');
+        data = data + ','
+        var aux = ""
+        var arreglo = []
+        var contador = 0
+        for (i = 0; i <= data.length; i++) {
+            if (data[i] == ',') {
+                arreglo[contador] = parseInt(aux)
+                aux = ""
+                contador++
+            } else {
+                aux = aux + data[i]
+            }
+        }
+        Highcharts.chart('container', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Reporte de Archivos'
+            },
+            subtitle: {
+                text: 'Reporte de columnas'
+            },
+            xAxis: {
+                categories: [
+                    'Enero',
+                    'Febrero',
+                    'Marzo',
+                    'Abril',
+                    'Mayo',
+                    'Junio',
+                    'Julio',
+                    'Agosto',
+                    'Septiembre',
+                    'Octubre',
+                    'Noviembre',
+                    'Diciembre'
+                ],
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Valores'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} total</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: 'Archivos totales',
+                showInLegend: false,
+                colorByPoint: true,
+                data: arreglo
+
+            }]
+        });
+    </script>
+</div>
+{%endblock body%}

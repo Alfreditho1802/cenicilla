@@ -1,0 +1,64 @@
+{%extends "index1.html"%} {% block body %}
+<div style="text-align: center;">
+    <h1 style="color: white;">Listado de Entrenamientos</h1>
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Umbrales</th>
+                <th>Canal 1</th>
+                <th>Canal 2</th>
+                <th>Canal 3</th>
+                <th>Canal 4</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for e in entre%}
+            <tr>
+                <td>{{e.id_Entrenamiento_Som}}</td>
+                <td>{{e.nombre}}</td>
+                <td>{{e.descripcion}}</td>
+                <td>
+                    <ul>
+                        <li>Umbral Minimo</li>
+                            <ul>
+                                <li>{{e.umbral_minimo}}</li>
+                            </ul>
+                        <li>Umbral medias</li>
+                            <ul>
+                                <li>{{e.umbral_par_media}}</li>
+                            </ul>
+                        <li>Umbral fusion</li>
+                            <ul>
+                                <li>{{e.umbral_fusion}}</li>
+                            </ul>
+                        <li>Umbral Poda</li>
+                            <ul>
+                                <li>{{e.umbral_poda}}</li>
+                            </ul>
+                        <li>Umbral Neuronas</li>
+                            <ul>
+                                <li>{{e.umbral_neuronas}}</li>
+                            </ul>
+                    </ul>
+
+                </td>
+                <td>{{e.canal1}}</td>
+                <td>{{e.canal2}}</td>
+                <td>{{e.canal3}}</td>
+                <td>{{e.canal4}}</td>
+                <td>
+                    <a href="{%url 'entrenamiento:m_imgs' e.id_Data.id_Data%}" class="btn btn-primary">Base</a>
+                    <a href="{%url 'entrenamiento:Mostrar_n' e.id_Entrenamiento_Som%}" class="btn btn-primary">Neuronas</a>
+                    <a href="{%url 'entrenamiento:Eliminar_entrena' e.id_Data.id_Data%}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+</div>
+{% endblock body %}

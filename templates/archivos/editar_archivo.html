@@ -1,0 +1,7 @@
+{%extends "index1.html"%} {% block body %}
+<form method="POST" enctype="multipart/form-data" class="form-group">
+    {% csrf_token %}
+    <h2 class="text-info"> {{error}} </h2> {{form.as_p}}
+    <button type="submit" class="btn btn-primary">Registrar</button>
+</form>
+{% endblock body %}

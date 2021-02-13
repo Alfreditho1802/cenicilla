@@ -1,0 +1,51 @@
+{%extends "index1.html"%} {% block body %}
+<div id="contenido" class="form-group row justify-content-center">
+    <div class="col-2">
+
+    </div>
+    <div class="col-8">
+        <table class=" table table-dark">
+            <thead>
+                <tr>
+                    <th>
+                        <h3>Funciones Entrenamiento</h3>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Imagenes Refencias</td>
+                    <td><a href="{%url 'entrenamiento:referencia'%}" class="btn btn-primary">Nueva</a></td>
+                    <td><a href="{%url 'entrenamiento:mostrar_ref'%}" class="btn btn-primary">Mostrar</a></td>
+                </tr>
+                <tr>
+                    <td>Formar Base para Entrenamiento</td>
+                    <td><a href="{%url 'entrenamiento:nueva_base'%}" class="btn btn-primary">Nueva</a></td>
+                    <td><a href="{%url 'entrenamiento:mostrar_data'%}" class="btn btn-primary">Mostrar</a></td>
+                </tr>
+                <tr>
+                    <td>Entrenamiento mapa autoorganizado</td>
+                    <td><a href="{%url 'entrenamiento:nuevo_entrenamiento'%}" class="btn btn-primary">Nuevo</a></td>
+                    <td><a href="{%url 'entrenamiento:Mostrar_entrena'%}" class="btn btn-primary">Mostrar</a></td>
+                </tr>
+                <tr>
+                    <td>Entrenamiento Red neuronal</td>
+                    <td><a href="{%url 'red_neuronal:nueva_red'%}" class="btn btn-primary">Nueva</a></td>
+                    <td><a href="{%url 'red_neuronal:mostrar'%}" class="btn btn-primary">Mostrar</a></td>
+                </tr>
+                <tr>
+                    <td>Analisis de una imagen</td>
+                    <td><a href="{%url 'analisis:nuevo'%}" class="btn btn-primary">Nueva</a></td>
+                    <td><a href="{%url 'analisis:mostrar'%}" class="btn btn-primary">Mostrar</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-2">
+
+    </div>
+</div>
+
+
+
+{%endblock body%}

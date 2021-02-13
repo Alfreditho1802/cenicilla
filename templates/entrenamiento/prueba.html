@@ -1,0 +1,27 @@
+{%extends "index.html"%} {% block body %}
+<table class='table  table-bordered table-dark'>
+    <thead>
+        <tr>
+            <th>
+                <h2>Imagenes</h2>
+            </th>
+            <th>
+                <h2>Selección</h2>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for imagen in img%}
+        <tr>
+            <td><img src="../../media/{{imagen}}" alt="error" width="400" height="400"></td>
+            <td><input type="checkbox" name="imagen" id="imagen"></td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+
+<p>
+    <p>
+        <input type="button" value="enviar" class='btn btn-outline-primary btn-lg'>
+    </p>
+</p> {% endblock body %}

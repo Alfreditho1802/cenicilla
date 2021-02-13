@@ -1,0 +1,70 @@
+{%extends "index1.html"%}{%block body%}
+<h3 style="text-align:center">Nueva Red Neuronal</h3>
+{{val1}}
+{{val2}}
+{{val3}}
+{%if error%}
+    <div class="alert alert-danger" role="alert">
+        {{error}}
+        {%if val%}
+        <ul class="errorlist">
+            <li>Imagen</li>
+            <ul class="errorlist">
+                <li>{{val}}</li>
+            </ul>
+        </ul>
+        {%endif%}
+    </div>
+{%endif%}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row border border-dark rounded table-dark">
+      <div class="col">
+          <h4>Nombre</h4>
+          {{form.nombre}}
+          <h4>Epoca</h4>
+          {{form.epoca}}
+          <h4>pasos</h4>
+          {{form.pasos}}
+          <h4>pasos de validacion</h4>
+          {{form.pasos_validacion}}
+          <br>
+      </div>
+      <div class="col">
+        <h4>Batch Size</h4>
+        {{form.batch_size}}
+        <h4>primer filtro</h4>
+        {{form.f1}}
+        <h4>Segundo filtro</h4>
+        {{form.f2}}
+          <br>
+          <br>
+      </div>
+      <div class="col">
+          <h4>Mapa autoorganizado</h4>
+          <h4>Clase 1</h4>
+          {{form.som}}
+          <h4>Clase 2</h4>
+          {{form.som1}}
+      </div>
+      <div class='col'>
+        <h4>Imagenes sin filtar</h4>
+        <h4>Clase 1</h4>
+        {{form.data}}
+        <h4>Clase 2</h4>
+        {{form.data1}}
+      </div>
+    </div>
+    </div>
+    <div class="form-group row justify-content-center">
+        <div class="col-4 ">
+        </div>
+        <div class="col-4 ">
+            <br>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">registrar</button><br>
+        </div>
+        <div class="col-4 ">
+        </div>
+    </div>
+  </form>
+{% endblock body %}

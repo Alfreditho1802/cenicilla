@@ -1,0 +1,38 @@
+{%extends "index1.html"%} {% block body %}
+<div style="text-align: center;">
+    <h1 style="color: white;">Datos de la red neuronal</h1>
+</div>
+<div>
+    <a href="{%url 'red_neuronal:mostrar'%}" class="btn btn-primary">Mostrar</a>
+</div>
+<div style="text-align: center;">
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>ACC</th>
+                <th>LOSS</th>
+                <th>MSE</th>
+                <th>VAL_ACC</th>
+                <th>VAL_LOSS</th>
+                <th>VAL_MSE</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in datos%}
+            <tr>
+                <td>{{d.id_datos}}</td>
+                <td>{{d.acc}}</td>
+                <td>{{d.loss}}</td>
+                <td>{{d.mse}}</td>
+                <td>{{d.val_acc}}</td>
+                <td>{{d.val_loss}}</td>
+                <td>{{d.val_mse}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+</div>
+{% endblock body %}

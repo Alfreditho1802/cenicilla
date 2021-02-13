@@ -1,0 +1,34 @@
+{%extends "index1.html"%} {% block body %}
+<div class="form-group row justify-content-center">
+    <div class="col-3 ">
+    </div>
+    <div class="col-6 border border-dark rounded table-dark">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %} {%if error %}
+            <script>
+                alert('{{error}}')
+            </script>
+            {%endif%}
+            <h1>Nueva Referencia</h1>
+            <br>
+            <h4>Nombre de la Imagen</h4>
+            {{form.nombre}}
+            <br>
+            <h4>Seleccione la imagen</h4>
+            {{form.img_org}}
+            <br>
+            <br>
+            <h4>Seleccione la base</h4>
+            {{form.Data}}
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary">registrar</button><br>
+            <br>
+        </form>
+    </div>
+    <div class="col-3 ">
+
+    </div>
+
+</div>
+{% endblock body %}

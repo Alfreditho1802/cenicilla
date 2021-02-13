@@ -1,0 +1,38 @@
+{%extends "index1.html"%} {%block body %}
+<form method="POST" enctype="multipart/form-data" class="table-striped table-dark">
+    {% csrf_token %} {%if error %}
+    <h2> {{error}} </h2>
+    {%endif%}
+    <h1>Nueva Base de datos</h1>
+    <div class="row">
+        <div class="col">
+            <h4>Nombre del Dataset</h4>
+            {{form.nombre}}
+            <h4>Parte infectada</h4>
+            {{form.parte_infectada}}
+            <h4>Color</h4>
+            {{form.color}}
+        </div>
+        <div class="col">
+            <h4>Forma</h4>
+            {{form.forma}}
+            <h4>Localizacion</h4>
+            {{form.localizacion}}
+            <h4>Humedad</h4>
+            {{form.humedad}}
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
+            <br>
+        </div>
+        <div class="col">
+            <h4>Enfermedad</h4>
+            {{form.enfermedad}}
+            <h4>Patógeno</h4>
+            {{form.patogeno}}
+            <h4>Seleccione la imagen</h4>
+            {{form.referencia}}
+        </div>
+    </div>
+</form>
+{% endblock body %}

@@ -1,0 +1,25 @@
+{%extends "index1.html"%} {% block body %}
+<div style="text-align: center;">
+    <h1 style="color: white;">Listado de Imagenes de referencia</h1>
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Imagen</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in referencias%}
+            <tr>
+                <td>{{r.id_ref}}</td>
+                <td>{{r.nombre}}</td>
+                <td><img src="../../media/{{r.img_normalizada}}" alt="Hola" width="200px"></td>
+                <td><a href="{%url 'entrenamiento:eliminar_ref' r.id_ref%}" class="btn btn-danger">Eliminar</a></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+</div>
+{% endblock body %}

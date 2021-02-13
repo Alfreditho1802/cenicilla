@@ -1,0 +1,25 @@
+{%extends "index1.html"%} {% block body %}
+<div class="form-group row justify-content-center">
+    <div class="col-3">
+
+    </div>
+    <div class="col-6">
+        <form method="POST" enctype="multipart/form-data" class="table table-dark">
+            {% csrf_token %} {%if error %}
+            <h2> {{error}} </h2>
+            {%else%} {%if error1%}
+            <script>
+                alert('{{error1}}')
+            </script>
+            {%endif%}
+            <h1>Editar Usuario</h1>
+            {{form.as_p}}
+            <button type="submit" class="btn btn-primary">subir</button><br><br> {%endif%}
+        </form>
+    </div>
+    <div class="col-3">
+
+    </div>
+</div>
+
+{% endblock body %}
